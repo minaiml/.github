@@ -12,7 +12,7 @@ repository's own `FORK.json`. This file is the roll-up.
 
 ## Distribution
 
-- **Apache-2.0** — 27
+- **Apache-2.0** — 32
 - **MIT** — 27
 - **NONE** — 6
 - **LGPL-3.0** — 2
@@ -21,7 +21,7 @@ repository's own `FORK.json`. This file is the roll-up.
 - **BSD-3-Clause** — 2
 - **MIT OR NCSA** — 1
 
-Total: 69 repositories.
+Total: 74 repositories.
 
 ## ⚠ No licence declared upstream
 
@@ -67,6 +67,20 @@ GitHub could not map these to a single SPDX identifier and reported `NOASSERTION
 | `ncnn` | BSD-3-Clause | Tencent — **except** listed third-party components under other terms. Check before vendoring a subtree. |
 | `emscripten` | MIT **or** NCSA | Dual-licensed, both permissive. |
 | `python-fire` | Apache-2.0 | Google Inc.; the header format is why GitHub declined to classify it. |
+| `cutile-python` | Apache-2.0 | NVIDIA. REUSE-style layout — `LICENSE` points at `LICENSES/` and declares `SPDX-License-Identifier: Apache-2.0`. |
+
+## CUDA Rust (added 2026-09-18)
+
+NVIDIA made Rust a first-class CUDA language on 2026-09-08. All five repositories in this group are
+**Apache-2.0** — the cleanest-licensed group in the catalogue.
+
+| repo | upstream | note |
+|---|---|---|
+| `cuda-oxide` | `NVlabs/cuda-oxide` | **NVlabs, not NVIDIA.** An unrelated 2021 project (`Protryon/cuda-oxide`) shares the name — check the owner. |
+| `cutile-rs` | `NVlabs/cutile-rs` | Stable Rust 1.89 + CUDA 13.3, on crates.io. |
+| `cutile-python` | `NVIDIA/cutile-python` | The cuTile programming model itself. |
+| `grout` | `huggingface/grout` | Hugging Face's LLM inference testbed on cutile-rs. |
+| `rust-cuda` | `Rust-GPU/rust-cuda` | Community project since 2021, not an NVIDIA release. |
 
 ## Full register
 
@@ -78,6 +92,9 @@ GitHub could not map these to a single SPDX identifier and reported `NOASSERTION
 | [BitNet](https://github.com/minaiml/BitNet) | `MIT` |
 | [candle](https://github.com/minaiml/candle) | `Apache-2.0` |
 | [ChatterUI](https://github.com/minaiml/ChatterUI) | `AGPL-3.0` |
+| [cuda-oxide](https://github.com/minaiml/cuda-oxide) | `Apache-2.0` |
+| [cutile-python](https://github.com/minaiml/cutile-python) | `Apache-2.0` *(read)* |
+| [cutile-rs](https://github.com/minaiml/cutile-rs) | `Apache-2.0` |
 | [discord-ai-bot](https://github.com/minaiml/discord-ai-bot) | **none declared** |
 | [distributed-llama](https://github.com/minaiml/distributed-llama) | `MIT` |
 | [ellama](https://github.com/minaiml/ellama) | `GPL-3.0` |
@@ -94,6 +111,7 @@ GitHub could not map these to a single SPDX identifier and reported `NOASSERTION
 | [ggml](https://github.com/minaiml/ggml) | `MIT` |
 | [.github](https://github.com/minaiml/.github) | **none declared** |
 | [gorilla](https://github.com/minaiml/gorilla) | `Apache-2.0` |
+| [grout](https://github.com/minaiml/grout) | `Apache-2.0` |
 | [KittenTTS](https://github.com/minaiml/KittenTTS) | `Apache-2.0` |
 | [kokoro](https://github.com/minaiml/kokoro) | `Apache-2.0` |
 | [ktransformers](https://github.com/minaiml/ktransformers) | `Apache-2.0` |
@@ -134,6 +152,7 @@ GitHub could not map these to a single SPDX identifier and reported `NOASSERTION
 | [PowerInfer](https://github.com/minaiml/PowerInfer) | `MIT` |
 | [python-fire](https://github.com/minaiml/python-fire) | `Apache-2.0` *(read)* |
 | [ramalama](https://github.com/minaiml/ramalama) | `MIT` |
+| [rust-cuda](https://github.com/minaiml/rust-cuda) | `Apache-2.0` |
 | [sherpa-onnx](https://github.com/minaiml/sherpa-onnx) | `Apache-2.0` |
 | [transformers.js](https://github.com/minaiml/transformers.js) | `Apache-2.0` |
 | [unsloth](https://github.com/minaiml/unsloth) | `Apache-2.0` |
