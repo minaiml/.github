@@ -34,8 +34,8 @@ Default copyright applies: all rights reserved by the author. Forking within Git
 | `flash-moe` | `danveloper/flash-moe` | [issue #19](https://github.com/danveloper/flash-moe/issues/19) — asked 2026-09-18 |
 | `Flash-iOS` | `Anemll/Flash-iOS` | [issue #1](https://github.com/Anemll/Flash-iOS/issues/1) — opened 2026-09-18 |
 | `flash-pi-dsv4` | `danveloper/flash-pi-dsv4` | same author as flash-moe; covered by the #19 thread |
-| `Anemll` | `Anemll/Anemll` | not yet asked |
-| `discord-ai-bot` | 2023 fork, not part of the delivery catalogue | not yet asked |
+| `Anemll` | `Anemll/Anemll` | not pursued — held under the same terms, no request made |
+| `discord-ai-bot` | 2023 fork, not part of the delivery catalogue | not pursued — outside the delivery catalogue |
 
 `.github` is this organization's own configuration repository, not a fork.
 
