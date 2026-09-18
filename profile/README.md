@@ -65,7 +65,27 @@ that honesty along with the code.
 | **cluster** | [exo](https://github.com/minaiml/exo) · [distributed-llama](https://github.com/minaiml/distributed-llama) · [petals](https://github.com/minaiml/petals) |
 | **on-device speech** | [whisper.cpp](https://github.com/minaiml/whisper.cpp) · [sherpa-onnx](https://github.com/minaiml/sherpa-onnx) · [piper](https://github.com/minaiml/piper) · [kokoro](https://github.com/minaiml/kokoro) · [KittenTTS](https://github.com/minaiml/KittenTTS) |
 | **runtime and format** | [ggml](https://github.com/minaiml/ggml) · [onnxruntime](https://github.com/minaiml/onnxruntime) · [onnxruntime-genai](https://github.com/minaiml/onnxruntime-genai) · [mlc-llm](https://github.com/minaiml/mlc-llm) |
+| **Rust GPU kernels** | [cuda-oxide](https://github.com/minaiml/cuda-oxide) · [cutile-rs](https://github.com/minaiml/cutile-rs) · [cutile-python](https://github.com/minaiml/cutile-python) · [grout](https://github.com/minaiml/grout) · [rust-cuda](https://github.com/minaiml/rust-cuda) |
 | **adaptation** | [unsloth](https://github.com/minaiml/unsloth) · [peft](https://github.com/minaiml/peft) |
+
+## CUDA Rust — the other end of the same problem
+
+NVIDIA made Rust a first-class CUDA language on **2026-09-08**, in two tracks:
+[cuda-oxide](https://github.com/minaiml/cuda-oxide) compiles ordinary Rust straight to PTX for the SIMT model
+(early alpha, pinned nightly toolchain, CUDA 12.x), and [cutile-rs](https://github.com/minaiml/cutile-rs) is a
+safe tile-based kernel DSL that runs on **stable Rust 1.89** with CUDA 13.3 and ships on crates.io. The
+programming model itself is [cutile-python](https://github.com/minaiml/cutile-python);
+[grout](https://github.com/minaiml/grout) is Hugging Face's LLM inference testbed built on cutile-rs;
+[rust-cuda](https://github.com/minaiml/rust-cuda) is the community project that got there first, in 2021.
+
+This is the opposite end of the catalogue from flash-moe, and deliberately so. The flash family wins by
+*avoiding* compute — leave the idle experts on disk and let the page cache work. CUDA Rust wins by making the
+compute you do keep memory-safe at compile time. A laptop with an RTX card is still a laptop, and
+[mistral.rs](https://github.com/minaiml/mistral.rs) in this catalogue already uses cutile-rs, so the two ends
+meet in software we already fork.
+
+Worth knowing: `cutile-rs` and `cuda-oxide` live under **NVlabs**, not NVIDIA, and there is an unrelated 2021
+project also called `cuda-oxide` (`Protryon/cuda-oxide`, a CUDA wrapper). Check the owner, not the name.
 
 The models these run are forked and licence-pinned at [PYTHAI on Hugging
 Face](https://huggingface.co/PYTHAI) — Qwen, GLM, Kimi, Granite, each at a pinned commit with its
