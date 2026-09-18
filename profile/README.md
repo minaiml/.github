@@ -89,7 +89,7 @@ identifier — read the file, don't assume. [ChatterUI](https://github.com/minai
 **AGPL-3.0**: fine as an unmodified fork, but network-hosting a derivative carries source obligations.
 [exo](https://github.com/minaiml/exo) is GPL-3.0.
 
-Nothing here is relicensed. A licence travels with its code.
+Nothing here is relicensed. A licence travels with its code. The full roll-up — every repository, the licence that governs it, and the copyleft obligations worth knowing before linking any of it — is in [LICENSES.md](https://github.com/minaiml/.github/blob/main/LICENSES.md).
 
 ## The organizations we run
 
