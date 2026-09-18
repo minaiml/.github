@@ -81,7 +81,7 @@ discipline PYTHAI applies to model weights, applied to software.
 [flash-pi-dsv4](https://github.com/minaiml/flash-pi-dsv4) and
 [Anemll](https://github.com/minaiml/Anemll). No licence means all rights reserved by the author.
 Forking inside GitHub is permitted by GitHub's own terms; redistributing, repackaging or shipping
-binaries from them is not, and we don't. We have asked upstream to declare one. Three more
+binaries from them is not, and we don't. We are asking upstream to declare one. Three more
 ([llamafile](https://github.com/minaiml/llamafile), [executorch](https://github.com/minaiml/executorch),
 [ncnn](https://github.com/minaiml/ncnn)) carry a LICENSE that GitHub cannot resolve to a single SPDX
 identifier — read the file, don't assume. [ChatterUI](https://github.com/minaiml/ChatterUI) is
