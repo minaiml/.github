@@ -49,8 +49,9 @@ useful: at 2-bit across the board, flash-moe emits `\name\` instead of `"name"` 
 breaks. 4-bit is the production configuration. Speed that costs correctness is not delivery.
 
 Credit where it belongs: the flash family is [danveloper](https://github.com/danveloper)'s work,
-building on Apple's *LLM in a Flash*. `results.tsv` in the repo logs 58 experiments, including the
-twelve that made things worse. We fork that honesty along with the code.
+building on Apple's *LLM in a Flash*. `results.tsv` in the repo logs 58 experiments, and the README
+gives as much room to the approaches that made things worse as to the ones that worked. We fork
+that honesty along with the code.
 
 ## The catalogue
 
