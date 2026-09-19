@@ -53,6 +53,22 @@ building on Apple's *LLM in a Flash*. `results.tsv` in the repo logs 58 experime
 gives as much room to the approaches that made things worse as to the ones that worked. We fork
 that honesty along with the code.
 
+## Towards 1.0.0 — the model player
+
+A media player does not ask you which codec to use. **A model player is that contract for weights**:
+hand it a model, and it works out which engine this device can run, which quantization fits the RAM the
+phone *actually* has free, and it plays. The target is a **modest Android phone** — the one people
+already own, not a flagship.
+
+Grounded in measured mid-range numbers: a 4 GB phone runs ~1B, 6 GB runs 1.7B, 8 GB runs 3–4B, all at
+Q4_K_M and **5–15 tok/s**. Runtime RAM is roughly file size × 1.5, and the OS has already taken 3–4 GB
+before you start. The engine cascade is MNN → llama.cpp (Vulkan/OpenCL) → MediaPipe → ExecuTorch, all
+permissive, ranked in config so a bad engine is demoted without a rebuild. The floor is
+[`PYTHAI/mindXtrain39`](https://huggingface.co/PYTHAI/mindXtrain39) at 135M, which runs on anything.
+
+The full specification, including what would make 1.0.0 a failure, is
+[PLAYER.md](https://github.com/minaiml/.github/blob/main/PLAYER.md).
+
 ## The catalogue
 
 | class | what it delivers |
