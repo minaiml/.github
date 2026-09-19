@@ -52,10 +52,12 @@ does the same for inference.
 |---|---|---|---|
 | 1 | [MNN](https://github.com/minaiml/MNN) | Apache-2.0 | ships `apps/Android`; consistently strong on mobile silicon |
 | 2 | [llama.cpp](https://github.com/minaiml/llama.cpp) | MIT | ships `examples/llama.android`, with **ggml-vulkan** and **ggml-opencl** for Adreno and Mali. Runs any GGUF on the Hub. **The floor that always works** |
-| 3 | [MediaPipe LLM Inference](https://github.com/minaiml/mediapipe) | Apache-2.0 | Google's Android path, `.task` bundles, GPU delegate |
+| 3 | [LiteRT-LM](https://github.com/minaiml/LiteRT-LM) | Apache-2.0 | Google's production edge-LLM framework, `.litertlm` and `.task`. **Replaces MediaPipe LLM Inference here** — Google's own docs now mark that API maintenance-only and say to migrate (corrected 2026-09-19) |
 | 4 | [ExecuTorch](https://github.com/minaiml/executorch) | BSD-3-Clause | PyTorch on-device, for models shipped that way |
 
 Every engine in the cascade is permissive. That is not an accident — see below.
+
+Only `llama.rn` is actually wired in BROBOT today. The others are registry entries the cascade reasons about and names honestly — *"would be faster with X, which is not yet wired"* — rather than pretending. The competitive case for a cascade at all is in [RUNTIME.md](RUNTIME.md).
 
 **Voice, because a phone is not a keyboard.**
 [sherpa-onnx](https://github.com/minaiml/sherpa-onnx) (Apache-2.0) for on-device ASR and TTS, with
