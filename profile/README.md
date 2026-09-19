@@ -69,6 +69,27 @@ permissive, ranked in config so a bad engine is demoted without a rebuild. The f
 The full specification, including what would make 1.0.0 a failure, is
 [PLAYER.md](https://github.com/minaiml/.github/blob/main/PLAYER.md).
 
+**[BROBOT](https://github.com/minaiml/brobot) is the build**, from PocketPal AI (MIT, React Native +
+llama.rn). Its `src/handheld/` module is the device side of the spec, and the findings so far are
+worth stating plainly:
+
+- **RAM is effort.** Three things compete for it — weights, KV cache, prefill batch — and KV cache is
+  charged *twice*, once in memory and again in bandwidth on every token. So the configuration that
+  fits the most context is reliably **not** the one that produces the most tokens. On a 3B model in
+  4 GB: max context returns **1.35 tok/s per GB**, the efficient point returns **3.51**. `planHandheld()`
+  picks on that frontier rather than maximising one axis.
+- **Quantizing the KV cache is a speed win, not just a memory win**, and the gain grows with context
+  because KV traffic grows while weight traffic does not: +12% at 4k, **+49% at 32k**.
+- **Memory scales with total parameters; speed scales with active ones.** A dense 35B holds 21 GB and
+  runs at 0.7 tok/s. An MoE 35B-A3B holds the same 21 GB and runs at **6.5 tok/s** — nine times the
+  throughput at identical memory cost. That is the entire mixture-of-experts argument in two rows.
+- **Draft dense models, do not draft MoE.** The flash-moe log measured speculative decoding as
+  break-even on MoE: each speculated token routes to its own experts, so verifying a batch touches a
+  batch of different expert sets and the I/O saving never arrives.
+
+Every number there is a **model, not a benchmark** — to be replaced by measured telemetry the moment
+a real device reports one.
+
 ## The catalogue
 
 | class | what it delivers |
