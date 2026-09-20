@@ -14,9 +14,9 @@ Published 2026 testing on a Samsung S25 Ultra running Phi-4 Mini:
 | MLC Chat | MLC, NPU path | **~22** | curated, precompiled only | no GGUF import; models are not portable to any other app |
 | Maid | llama.cpp + Vulkan | ~18 | any GGUF | no NPU; rougher UI |
 | PocketPal AI | llama.rn + Vulkan | ~16 | any GGUF, Hugging Face built in | slower than the NPU path |
-| Layla | CPU | ~14 | curated | CPU only, no import |
-| Private AI | CPU | ~13 | curated | CPU only, no configuration |
 | Ollama in Termux | CPU | ~10 | the whole Ollama library | 20–30 minutes of terminal setup; killed in the background |
+
+Every row above is open source — MLC LLM (Apache-2.0), Maid and PocketPal AI (MIT), Ollama (MIT). The closed-source apps the same review covered are left out on purpose; see *Open source or go away* below.
 
 Read the table sideways and the category's real shape appears: **speed and freedom are sold
 separately.** The fastest app cannot load your model. The apps that can load your model leave a third
@@ -47,24 +47,34 @@ That single inversion is what the word *runtime* is doing in the title. The rest
 
 | gap | BROBOT's answer | state |
 |---|---|---|
-| one engine per app | engine cascade with an honest registry | **built** as pure logic; only `llama.rn` is wired |
-| no native local API | OpenAI-compatible protocol layer, loopback by default, bearer token, size caps | **built** as a pure protocol layer; the socket server is a native seam, **not built** |
-| background death | foreground-service policy, per-vendor exemption guidance, thermal governor with hysteresis | **built** as policy; needs native modules to act |
-| four copies of one model | content-addressed shared store, reference counted, hash-verified, Wi-Fi by default | **built** as policy; not wired to the downloader |
-| estimates everywhere | measured telemetry that back-solves real bandwidth and replaces the model's guesses | **built**; has never run on a device |
-| an island | presents itself to [mindX](https://huggingface.co/spaces/PYTHAI/mindX) as an edge node — charging, on Wi-Fi, cool, opted in, or not at all | **built** as a contract; no live handshake |
+| one engine per app | engine cascade with an honest registry and a licence guard | **written and executed** (86 assertions); only `llama.rn` is wired; not yet independently reviewed |
+| no native local API | OpenAI-compatible protocol layer, loopback by default, bearer token, size caps | **written and executed** (97 assertions) as a pure protocol layer; the socket server is a native seam and is **not built** |
+| estimates everywhere | measured telemetry that back-solves real bandwidth and replaces the model's guesses | **written and executed** (67 assertions); has never run on a device |
+| an island | presents itself to [mindX](https://huggingface.co/spaces/PYTHAI/mindX) as an edge node — charging, on Wi-Fi, cool, opted in, or not at all | **written and executed** (69 assertions) as a contract; no live handshake |
+| background death | foreground-service policy, per-vendor exemption guidance, thermal governor | **not built yet** |
+| four copies of one model | content-addressed shared store, reference counted, hash-verified | **not built yet** |
+| the plan never reaches a user | bridge from the handheld plan to the app's real context parameters | **not built yet** |
 
 **The honest reading of that last column:** this is a decision layer, fully written and executed as
 pure logic, sitting on top of one wired engine. It is not yet an APK anyone can install, and it has
 never generated a token on a phone. The reasoning is sound and tested; the claim "fastest on Android"
 is not one BROBOT can make, and it does not make it.
 
+## Open source or go away
+
+A standing rule of this estate, recorded here as an addendum to the cypherpunk2048 standard: **if it
+is not open source, it is ignored.** Not forked, not benchmarked against, not used as a data source,
+not cited as prior art to build on. A licence that forbids commercial use, withholds source, or is
+simply absent is not a smaller kind of open — it is closed.
+
+In code, that is the engine registry's licence guard: an engine with no SPDX identifier, or one that
+is not on the permissive allow-list, is refused at registration with the reason stated. In this
+document, it is why the table above has four rows and not six.
+
 ## What was deliberately not used
 
-- **`timmyy123/LLM-Hub`** is the most ambitious project in the space — text, image, video and music
-  generation, RAG, an on-device agent. It is licensed **PolyForm Noncommercial 1.0.0**, which is not an
-  open-source licence. Nothing was taken from it and it is not forked here. It is cited because it
-  deserves to be.
+- **`timmyy123/LLM-Hub`** is licensed **PolyForm Noncommercial 1.0.0**, which is not an open-source
+  licence. Ignored: not forked, nothing taken.
 - **MediaPipe LLM Inference** is in maintenance-only mode by Google's own statement.
   [LiteRT-LM](https://github.com/minaiml/LiteRT-LM) (Apache-2.0) replaces it in the cascade.
 - **koboldcpp** is AGPL-3.0; **vLLM** is a datacentre engine. Both covered in
